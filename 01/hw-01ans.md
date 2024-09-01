@@ -15,6 +15,7 @@
 
 Скриншот вывода команды ```terraform --version```:
 ![Screenshot0_1](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot0_1.png)
+
 ------
 
 ### Инструменты и дополнительные материалы, которые пригодятся для выполнения задания
