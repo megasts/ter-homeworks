@@ -38,44 +38,44 @@
 2. Изучите файл **.gitignore**. В каком terraform-файле, согласно этому .gitignore, допустимо сохранить личную, секретную информацию?(логины,пароли,ключи,токены итд)
     
     *Ответ:*
-
-    *Сохранить личную, секретную информацию допустимо в файле: personal.auto.tfvars*
+      *Сохранить личную, секретную информацию допустимо в файле: personal.auto.tfvars*
 
 3. Выполните код проекта. Найдите  в state-файле секретное содержимое созданного ресурса **random_password**, пришлите в качестве ответа конкретный ключ и его значение.
 
     *Ответ:*
-
-    *"result": "Yw5b40CKF0NwYxNF"*
+      *"result": "Yw5b40CKF0NwYxNF"*
 
 4. Раскомментируйте блок кода, примерно расположенный на строчках 29–42 файла **main.tf**.
 Выполните команду ```terraform validate```. Объясните, в чём заключаются намеренно допущенные ошибки. Исправьте их.
     
-  *Ответ:*
-    
-  **
+  *Ответ:* 
+    **
 
 
 
 5. Выполните код. В качестве ответа приложите: исправленный фрагмент кода и вывод команды ```docker ps```.
 
     *Ответ:*
+    *1. Исправленный фрагмент кода*
+      ```tf
+      resource "docker_image" "nginx" {
+        name         = "nginx:latest"
+        keep_locally = true
+      }
 
-```tf
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
-  keep_locally = true
-}
+      resource "docker_container" "nginx" {
+        image = docker_image.nginx.image_id
+        name  = "example_${random_password.random_string.result}"
 
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.image_id
-  name  = "example_${random_password.random_string.result}"
+        ports {
+          internal = 80
+          external = 9090
+        }
+      }
+      ```
+    *2. Вывод команды ```docker ps```:*
 
-  ports {
-    internal = 80
-    external = 9090
-  }
-}
-```
+    ![Screenshot1_5](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot1_5.png)
 
 6. Замените имя docker-контейнера в блоке кода на ```hello_world```. Не перепутайте имя контейнера и имя образа. Мы всё ещё продолжаем использовать name = "nginx:latest". Выполните команду ```terraform apply -auto-approve```.
 Объясните своими словами, в чём может быть опасность применения ключа  ```-auto-approve```. Догадайтесь или нагуглите зачем может пригодиться данный ключ? В качестве ответа дополнительно приложите вывод команды ```docker ps```.
