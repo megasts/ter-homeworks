@@ -13,8 +13,8 @@
 2. Скачайте на свой ПК этот git-репозиторий. Исходный код для выполнения задания расположен в директории **01/src**.
 3. Убедитесь, что в вашей ОС установлен docker.
 
-Скриншот вывода команды ```terraform --version```:
-![Screenshot0_1](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot0_1.png)
+  *Скриншот вывода команды ```terraform --version```:*
+  ![Screenshot0_1](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot0_1.png)
 
 ------
 
@@ -52,10 +52,10 @@
 Выполните команду ```terraform validate```. Объясните, в чём заключаются намеренно допущенные ошибки. Исправьте их.
     
   *Ответ:* 
-    Ошибка 1: *"All resource blocks must have 2 labels (type, name)" - отсутствует имя ресурса с типом Docker образа.*
-    Ошибка 2: *"A name must start with a letter or underscore and may contain only letters, digits, underscores, and dashes." - имя docker контейнера должно начинатся с литеры*
-    Ошибка 3: *"A managed resource "random_password" "random_string_FAKE" has not been declared in the root module." - имя ресурса с типом random_password не соответствует указанному в родительском блоке*
-    Ошибка 4: *"This object has no argument, nested block, or exported attribute named "resulT". Did you mean "result"?" - ошибка написания имени атрибута*
+    *Ошибка 1: "All resource blocks must have 2 labels (type, name)" - отсутствует имя ресурса с типом Docker образа.*
+    *Ошибка 2: "A name must start with a letter or underscore and may contain only letters, digits, underscores, and dashes." - имя docker контейнера должно начинатся с литеры*
+    *Ошибка 3: "A managed resource "random_password" "random_string_FAKE" has not been declared in the root module." - имя ресурса с типом random_password не соответствует указанному в родительском блоке*
+    *Ошибка 4: "This object has no argument, nested block, or exported attribute named "resulT". Did you mean "result"?" - ошибка написания имени атрибута*
 
 5. Выполните код. В качестве ответа приложите: исправленный фрагмент кода и вывод команды ```docker ps```.
 
