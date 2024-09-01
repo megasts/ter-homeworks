@@ -43,20 +43,24 @@
 3. Выполните код проекта. Найдите  в state-файле секретное содержимое созданного ресурса **random_password**, пришлите в качестве ответа конкретный ключ и его значение.
 
     *Ответ:*
-      ```"result": "Yw5b40CKF0NwYxNF"```
+    
+    ![Screenshot1_3](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot1_3.png)
+
+      ```"result": "2RXnPbhQQnmo4Jaq"```
 
 4. Раскомментируйте блок кода, примерно расположенный на строчках 29–42 файла **main.tf**.
 Выполните команду ```terraform validate```. Объясните, в чём заключаются намеренно допущенные ошибки. Исправьте их.
     
   *Ответ:* 
-    **
-
-
+    Ошибка 1: *"All resource blocks must have 2 labels (type, name)" - отсутствует имя ресурса с типом Docker образа.*
+    Ошибка 2: *"A name must start with a letter or underscore and may contain only letters, digits, underscores, and dashes." - имя docker контейнера должно начинатся с литеры*
+    Ошибка 3: *"A managed resource "random_password" "random_string_FAKE" has not been declared in the root module." - имя ресурса с типом random_password не соответствует указанному в родительском блоке*
+    Ошибка 4: *"This object has no argument, nested block, or exported attribute named "resulT". Did you mean "result"?" - ошибка написания имени атрибута*
 
 5. Выполните код. В качестве ответа приложите: исправленный фрагмент кода и вывод команды ```docker ps```.
 
     *Ответ:*
-    *1. Исправленный фрагмент кода*
+    *1. Исправленный фрагмент кода:*
       ```tf
       resource "docker_image" "nginx" {
         name         = "nginx:latest"
@@ -79,9 +83,25 @@
 
 6. Замените имя docker-контейнера в блоке кода на ```hello_world```. Не перепутайте имя контейнера и имя образа. Мы всё ещё продолжаем использовать name = "nginx:latest". Выполните команду ```terraform apply -auto-approve```.
 Объясните своими словами, в чём может быть опасность применения ключа  ```-auto-approve```. Догадайтесь или нагуглите зачем может пригодиться данный ключ? В качестве ответа дополнительно приложите вывод команды ```docker ps```.
+
+  *Ответ: опасность применения ключа  ```-auto-approve``` в отсутсвии возможности увидеть не верно составленный план применения изменений, что может привести к случайному удалению или изменению ресурсов автоматически, без необходимости подтверждения.* 
+  *Этот параметр полезен в сценариях, когда требуется пропустить этап утверждения вручную, который обычно следует за этапом планирования terraform.*
+
+  ![Screenshot1_6](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot1_6.png)
+
 8. Уничтожьте созданные ресурсы с помощью **terraform**. Убедитесь, что все ресурсы удалены. Приложите содержимое файла **terraform.tfstate**. 
+      
+    *Ответ:*
+      
+    ![Screenshot1_8](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot1_8.png)
+
 9. Объясните, почему при этом не был удалён docker-образ **nginx:latest**. Ответ **ОБЯЗАТЕЛЬНО НАЙДИТЕ В ПРЕДОСТАВЛЕННОМ КОДЕ**, а затем **ОБЯЗАТЕЛЬНО ПОДКРЕПИТЕ** строчкой из документации [**terraform провайдера docker**](https://docs.comcloud.xyz/providers/kreuzwerker/docker/latest/docs).  (ищите в классификаторе resource docker_image )
 
+    *Ответ: docker-образ не был удалён после операции destroy причине следующей опции:*
+    ```tf
+     keep_locally = true
+    ```
+    *keep_locally (Boolean) If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker local storage on destroy operation. (Если значение true, то образ Docker не будет удален из локального хранилища docker при операции destroy)*
 
 ------
 
