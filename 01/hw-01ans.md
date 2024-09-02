@@ -130,8 +130,8 @@
 #### Ответ
   - финальный код находится здесь:
 
-  [main.tf](https://github.com/megasts/ter-homeworks/blob/main/01/mysql/main.tf)
-  
+  [main.tf](https://github.com/megasts/ter-homeworks/blob/main/01/mysql_env/main.tf)
+
   - проверили наличие секретных env-переменных с помощью команды ```env```:
 
   ![Screenshot2_1](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot2_1.png)
