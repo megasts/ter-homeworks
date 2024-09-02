@@ -127,6 +127,15 @@
 
 6. Зайдите на вашу ВМ , подключитесь к контейнеру и проверьте наличие секретных env-переменных с помощью команды ```env```. Запишите ваш финальный код в репозиторий.
 
+#### Ответ
+  - финальный код находится здесь:
+
+  [main.tf](https://github.com/megasts/ter-homeworks/blob/main/01/mysql/main.tf)
+  
+  - проверили наличие секретных env-переменных с помощью команды ```env```:
+
+  ![Screenshot2_1](https://github.com/megasts/ter-homeworks/blob/main/01/img/Screenshot2_1.png)
+
 ### Задание 3*
 1. Установите [opentofu](https://opentofu.org/)(fork terraform с лицензией Mozilla Public License, version 2.0) любой версии
 2. Попробуйте выполнить тот же код с помощью ```tofu apply```, а не terraform apply.
