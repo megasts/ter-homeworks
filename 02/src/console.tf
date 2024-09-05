@@ -1,6 +1,8 @@
 ##Этот файл для 7 задания!!
 locals {
-
+  
+  text = "${local.test_map.admin} is ${keys(local.test_map).0} for ${keys(local.servers).1} server based on OS ${local.servers.production.image} with ${local.servers.production.cpu} vcpu, ${local.servers.production.ram} ram and ${length(local.servers.production.disks)} virtual disks"
+  
   test_list = ["develop", "staging", "production"]
 
   test_map = {

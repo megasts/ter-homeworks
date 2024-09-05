@@ -134,6 +134,14 @@
 5. Найдите и закоментируйте все, более не используемые переменные проекта.
 6. Проверьте terraform plan. Изменений быть не должно.
 
+
+
+#### Ответ.
+
+  Финальный код находится здесь:
+
+  [src](https://github.com/megasts/ter-homeworks/blob/main/02/src)
+
 ------
 
 ## Дополнительное задание (со звёздочкой*)
@@ -156,6 +164,28 @@
 
 В качестве решения предоставьте необходимые команды и их вывод.
 
+#### Ответ:
+
+1. 
+```
+> local.test_list.1
+"staging"
+```
+2. 
+```
+> length(local.test_list)
+3
+```
+3. 
+```
+> keys(local.test_map).0
+"admin"
+```
+4. interpolation-выражение записал в console.tf под переменной text
+```
+> local.text
+"John is admin for production server based on OS ubuntu-20-04 with 10 vcpu, 40 ram and 4 virtual disks"
+```
 ------
 
 ### Задание 8*

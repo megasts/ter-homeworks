@@ -18,8 +18,14 @@ variable "vm_db_vpc_name" {
 
 ###ssh vars
 
-variable "vm_db_vms_ssh_root_key" {
+# variable "vm_db_vms_ssh_root_key" {
+#   type        = string
+#   default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGK0+6Ztaa7KexL4Z9wNAxpVZJbgzPUY40gukKpM+t1X megion@megion"
+#   description = "ssh-keygen -t ed25519"
+# }
+
+variable "vm_role_db" {
   type        = string
-  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGK0+6Ztaa7KexL4Z9wNAxpVZJbgzPUY40gukKpM+t1X megion@megion"
-  description = "ssh-keygen -t ed25519"
+  default     = "db"
+  description = "netology-...-...-db"
 }
