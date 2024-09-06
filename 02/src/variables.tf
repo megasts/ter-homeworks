@@ -85,16 +85,18 @@ variable "vms_resources" {
 
 ###metadata
 
- variable "metadata" {
+ variable "vm_metadata" {
    type = map(object({
      serial-port-enable = number
      ssh-keys = string
    }))
    default={
-      data = {
+      metadata = {
        serial-port-enable = 1
        ssh-keys = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGK0+6Ztaa7KexL4Z9wNAxpVZJbgzPUY40gukKpM+t1X megion@megion"
      }
     }
  }
 
+###test
+variable "test" {}

@@ -136,11 +136,9 @@
 
 
 
-#### Ответ.
+### ** Ответ. **
 
-  Финальный код находится здесь:
-
-  [src](https://github.com/megasts/ter-homeworks/blob/main/02/src)
+  Финальный код находится в этой папке: [src](https://github.com/megasts/ter-homeworks/blob/main/02/src)
 
 ------
 
@@ -213,6 +211,12 @@ test = [
 ]
 ```
 2. Напишите выражение в terraform console, которое позволит вычленить строку "ssh -o 'StrictHostKeyChecking=no' ubuntu@62.84.124.117" из этой переменной.
+
+### Ответ
+```
+> var.test.0.dev1.0
+"ssh -o 'StrictHostKeyChecking=no' ubuntu@62.84.124.117"
+```
 ------
 
 ------
@@ -221,7 +225,21 @@ test = [
 
 Используя инструкцию https://cloud.yandex.ru/ru/docs/vpc/operations/create-nat-gateway#tf_1, настройте для ваших ВМ nat_gateway. Для проверки уберите внешний IP адрес (nat=false) у ваших ВМ и проверьте доступ в интернет с ВМ, подключившись к ней через serial console. Для подключения предварительно через ssh измените пароль пользователя: ```sudo passwd ubuntu```
 
-### Правила приёма работыДля подключения предварительно через ssh измените пароль пользователя: sudo passwd ubuntu
+### Ответ:
+Проверил доступ в интернет с ВМ, подключившись к ней через serial console:
+- ВМ web
+```
+ubuntu@fhmlfahrmqau8eiq31nd:~$ curl -Is https://netology.ru | head -1
+HTTP/2 200 
+```
+
+- ВМ db
+```
+ubuntu@epd6jvc1a60vl9ok8p43:~$ curl -Is https://netology.ru |head -1
+HTTP/2 200 
+```
+
+### Правила приёма работы
 В качестве результата прикрепите ссылку на MD файл с описанием выполненой работы в вашем репозитории. Так же в репозитории должен присутсвовать ваш финальный код проекта.
 
 **Важно. Удалите все созданные ресурсы**.

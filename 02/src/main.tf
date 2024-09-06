@@ -1,18 +1,40 @@
 resource "yandex_vpc_network" "develop" {
-  name = var.vm_web_vpc_name
+  folder_id      = var.vm_web_folder_id
+  name           = var.vm_web_vpc_name
 }
 resource "yandex_vpc_subnet" "develop-web" {
+  folder_id      = var.vm_web_folder_id
   name           = var.vm_web_vpc_name
   zone           = var.vm_web_default_zone
   network_id     = yandex_vpc_network.develop.id
   v4_cidr_blocks = var.vm_web_default_cidr
+  route_table_id = yandex_vpc_route_table.rt.id
 }
 
 resource "yandex_vpc_subnet" "develop-db" {
+  folder_id      = var.vm_web_folder_id
   name           = var.vm_db_vpc_name
   zone           = var.vm_db_default_zone
   network_id     = yandex_vpc_network.develop.id
   v4_cidr_blocks = var.vm_db_default_cidr
+  route_table_id = yandex_vpc_route_table.rt.id
+}
+
+resource "yandex_vpc_gateway" "nat_gateway" {
+  folder_id      = var.vm_web_folder_id
+  name = "test-gateway"
+  shared_egress_gateway {}
+}
+
+resource "yandex_vpc_route_table" "rt" {
+  folder_id      = var.vm_web_folder_id
+  name       = "test-route-table"
+  network_id = yandex_vpc_network.develop.id
+
+  static_route {
+    destination_prefix = "0.0.0.0/0"
+    gateway_id         = yandex_vpc_gateway.nat_gateway.id
+  }
 }
 
 data "yandex_compute_image" "ubuntu" {
@@ -39,14 +61,14 @@ resource "yandex_compute_instance" "platform-web" {
 
   network_interface {
     subnet_id = yandex_vpc_subnet.develop-web.id
-    nat       = true
+    nat       = false
   }
 
   # metadata = {
   #   serial-port-enable = 1
   #   ssh-keys           = "ubuntu:${var.vm_web_vms_ssh_root_key}"
   # }
-  metadata = var.metadata.data
+  metadata = var.vm_metadata.metadata
 }
 
 resource "yandex_compute_instance" "platform-db" {
@@ -70,12 +92,12 @@ resource "yandex_compute_instance" "platform-db" {
 
   network_interface {
     subnet_id = yandex_vpc_subnet.develop-db.id
-    nat       = true
+    nat       = false
   }
 
   # metadata = {
   #   serial-port-enable = 1
   #   ssh-keys = "ubuntu:${var.vm_db_vms_ssh_root_key}"
   # }
-  metadata = var.metadata.data
+  metadata = var.vm_metadata.metadata
 }
