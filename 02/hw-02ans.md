@@ -226,7 +226,7 @@ test = [
 Используя инструкцию https://cloud.yandex.ru/ru/docs/vpc/operations/create-nat-gateway#tf_1, настройте для ваших ВМ nat_gateway. Для проверки уберите внешний IP адрес (nat=false) у ваших ВМ и проверьте доступ в интернет с ВМ, подключившись к ней через serial console. Для подключения предварительно через ssh измените пароль пользователя: ```sudo passwd ubuntu```
 
 ### Ответ:
-Проверил доступ в интернет с ВМ, подключившись к ней через serial console:
+Настроил для ВМ nat_gateway, уберал внешний IP адрес (nat=false), проверил доступ в интернет с ВМ, подключившись к ней через serial console:
 - ВМ web
 ```
 ubuntu@fhmlfahrmqau8eiq31nd:~$ curl -Is https://netology.ru | head -1
