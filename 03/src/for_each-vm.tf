@@ -3,7 +3,7 @@ data "yandex_compute_image" "os_each_vm" {
 }
 
 resource "yandex_compute_instance" "each-vm" {
-  for_each          = {for vm in var.each_vm: "${vm.instance_name}" => vm}
+  for_each          = {for vm in var.each_vm[*]: "${vm.instance_name}" => vm}
   name              = each.value.instance_name
   platform_id       = each.value.platform_id
   resources {
