@@ -12,6 +12,3 @@
 personal.auto.tfvars
 
 
-terraform.tfvars
-
-tfplan
