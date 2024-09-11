@@ -11,7 +11,7 @@
 Приложите скриншот входящих правил «Группы безопасности» в ЛК Yandex Cloud или скриншот отказа в предоставлении доступа к preview-версии.
 
 ### Ответ
-![Screenshot1_1](https://github.com/megasts/ter-homeworks/blob/main/03/img/Screenshot1_1.png)
+![Screenshot1_1](https://github.com/megasts/ter-homeworks/blob/terraform-3/03/img/Screenshot1_1.png)
 ------
 
 ### Задание 2
@@ -66,9 +66,9 @@ storage ansible_host=<внешний ip-адрес> fqdn=<полное доме�
 ### Ответ
   - скриншот получившихся inventory-файлов для ansible разными способами с учетом выполненного задания № 6: 
 
-  ![Screenshot1_1](https://github.com/megasts/ter-homeworks/blob/main/03/img/Screenshot4_1.png)
+  ![Screenshot1_1](https://github.com/megasts/ter-homeworks/blob/terraform-3/03/img/Screenshot4_1.png)
 
-  - код вместе с выполненным заданием № 6 в папке: [src](https://github.com/megasts/ter-homeworks/blob/main/03/src)
+  - код вместе с выполненным заданием № 6 в папке: [src](https://github.com/megasts/ter-homeworks/blob/terraform-3/03/src)
 ------
 
 ## Дополнительные задания (со звездочкой*)
