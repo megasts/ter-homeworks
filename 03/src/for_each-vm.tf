@@ -1,9 +1,9 @@
-data "yandex_compute_image" "os_each_vm" {
-  family            = var.os_each_vm
+data "yandex_compute_image" "os_database" {
+  family            = var.os_db
 }
 
-resource "yandex_compute_instance" "each-vm" {
-  for_each          = {for vm in var.each_vm[*]: "${vm.instance_name}" => vm}
+resource "yandex_compute_instance" "vm_database" {
+  for_each          = {for vm in var.vm_db[*]: "${vm.instance_name}" => vm}
   name              = each.value.instance_name
   platform_id       = each.value.platform_id
   resources {
@@ -13,7 +13,7 @@ resource "yandex_compute_instance" "each-vm" {
   }
   boot_disk {
     initialize_params {
-      image_id      = data.yandex_compute_image.os_each_vm.image_id
+      image_id      = data.yandex_compute_image.os_database.image_id
       size          = each.value.disk_volume
       type          = each.value.disk_type
     }

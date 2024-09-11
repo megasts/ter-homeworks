@@ -5,33 +5,33 @@ resource "yandex_compute_disk" "storage" {
   size      = 1
 }
 
-data "yandex_compute_image" "os_storage-vm" {
-  family            = var.storage-vm.os_family
+data "yandex_compute_image" "os_storage" {
+  family            = var.vm_storage.os_family
 }
 
-resource "yandex_compute_instance" "storage-vm"{
-    name        = "storage"
-    platform_id = var.storage-vm.platform_id
+resource "yandex_compute_instance" "vm_storage"{
+    name        = var.vm_storage.name
+    platform_id = var.vm_storage.platform_id
     resources {
-        cores           = var.storage-vm.cores
-        memory          = var.storage-vm.memory 
-        core_fraction   = var.storage-vm.core_fraction
+        cores           = var.vm_storage.cores
+        memory          = var.vm_storage.memory 
+        core_fraction   = var.vm_storage.core_fraction
     }
     boot_disk {
         initialize_params {
-            image_id      = data.yandex_compute_image.os_storage-vm.image_id
-            size          = var.storage-vm.disk_volume
-            type          = var.storage-vm.disk_type
+            image_id      = data.yandex_compute_image.os_storage.image_id
+            size          = var.vm_storage.disk_volume
+            type          = var.vm_storage.disk_type
         }
     }
     scheduling_policy {
-        preemptible = var.storage-vm.preemptible
+        preemptible = var.vm_storage.preemptible
     }
 
     network_interface {
         subnet_id = yandex_vpc_subnet.develop.id
         #security_group_ids = [yandex_vpc_security_group.example.id]
-        nat       = true
+        nat       = false
     }
 
     metadata = local.ssh_key_serial_port

@@ -36,11 +36,11 @@ variable "vpc_name" {
   description = "VPC network&subnet name"
 }
 
-variable "count_vm" {
+variable "vm_web" {
   type = map(any)
 
   default={  
-    vm_count        = 2,
+    vm_count        = 2, #количество машин
     os_family       = "ubuntu-2004-lts",
     platform_id     = "standard-v2",
     cores           = 2,
@@ -52,12 +52,12 @@ variable "count_vm" {
   }
 }
 
-variable "os_each_vm"{
+variable "os_db"{
   type = string
   default = "ubuntu-2004-lts"
 }
 
-variable "each_vm" {
+variable "vm_db" {
   type = list(object({
     instance_name   = string
     platform_id     = string
@@ -93,18 +93,21 @@ variable "each_vm" {
   ]
 }
 
-variable "storage-vm" {
+variable "vm_storage" {
   type = object({
-    os_family = string,
+    name        = string,
+    os_family   = string,
     platform_id = string,
-    cores = number,
-    memory = number,
+    cores       = number,
+    memory      = number,
     core_fraction = number,
     preemptible = bool,
     disk_volume = number,
-    disk_type = string})
+    disk_type   = string
+    })
 
   default={  
+    name            = "storage"
     os_family       = "ubuntu-2004-lts",
     platform_id     = "standard-v2",
     cores           = 2,
@@ -114,4 +117,10 @@ variable "storage-vm" {
     disk_volume     = 10,
     disk_type       = "network-hdd"
   }
+}
+
+variable "web_provision" {
+  type    = bool
+  default = true
+  description="ansible provision switch variable"
 }

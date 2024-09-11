@@ -1,27 +1,27 @@
-data "yandex_compute_image" "os_count-vm" {
-  family            = var.count_vm.os_family
+data "yandex_compute_image" "os_web" {
+  family            = var.vm_web.os_family
 }
 
-resource "yandex_compute_instance" "count-vm" {
-  depends_on        = [yandex_compute_instance.each-vm]
-  count             = var.count_vm.vm_count
+resource "yandex_compute_instance" "vm_web" {
+  depends_on        = [yandex_compute_instance.vm_database]
+  count             = var.vm_web.vm_count
   name              = "web-${count.index+1}"
-  platform_id       = var.count_vm.platform_id
+  platform_id       = var.vm_web.platform_id
   resources {
-    cores           = var.count_vm.cores
-    memory          = var.count_vm.memory 
-    core_fraction   = var.count_vm.core_fraction
+    cores           = var.vm_web.cores
+    memory          = var.vm_web.memory 
+    core_fraction   = var.vm_web.core_fraction
   }
   boot_disk {
     initialize_params {
-      image_id      = data.yandex_compute_image.os_count-vm.image_id
-      size          = var.count_vm.disk_volume
-      type          = var.count_vm.disk_type
+      image_id      = data.yandex_compute_image.os_web.image_id
+      size          = var.vm_web.disk_volume
+      type          = var.vm_web.disk_type
     }
   }
 
   scheduling_policy {
-    preemptible = var.count_vm.preemptible
+    preemptible = var.vm_web.preemptible
   }
 
   network_interface {
