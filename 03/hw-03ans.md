@@ -68,7 +68,7 @@ storage ansible_host=<внешний ip-адрес> fqdn=<полное доме�
 
   ![Screenshot1_1](https://github.com/megasts/ter-homeworks/blob/terraform-03/03/img/Screenshot4_1.png)
 
-  - код вместе с выполненным заданием № 6 в папке: [src](https://github.com/megasts/ter-homeworks/blob/terraform-3/03/src)
+  - код вместе с выполненным заданием № 6 в папке: [src](https://github.com/megasts/ter-homeworks/tree/terraform-03/03/src)
 ------
 
 ## Дополнительные задания (со звездочкой*)
