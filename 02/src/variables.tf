@@ -4,11 +4,11 @@
 #  description = "OAuth-token; https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token"
 #}
 
-variable "vm_web_cloud_id" {
-  type        = string
-  default     = "b1g81hds82c2c8vrisi2"
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
-}
+# variable "vm_web_cloud_id" {
+#   type        = string
+#   default     = ""
+#   description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
+# }
 
 variable "vm_web_folder_id" {
   type        = string
