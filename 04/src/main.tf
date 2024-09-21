@@ -1,3 +1,9 @@
+# module "vpc_prod" {
+#   source       = "./vpc_2"
+#   env_name     = "production"
+#   subnets_data = var.subnets_data
+# }
+
 
 module "vpc" {
   source = "./vpc"
@@ -10,6 +16,9 @@ module "vpc" {
 module "marketing_vm" {
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
   env_name       = var.prefix_vm 
+  # network_id     = module.vpc_prod.yandex_vpc_network
+  # subnet_zones   = [module.vpc_prod.vpc_subnet_zones[0]]
+  # subnet_ids     = [module.vpc_prod.yandex_vpc_subnet_id[0]]
   network_id     = module.vpc.yandex_vpc_network
   subnet_zones   = [module.vpc.vpc_subnet_zones]
   subnet_ids     = [module.vpc.yandex_vpc_subnet]
@@ -32,6 +41,9 @@ module "marketing_vm" {
 module "analytics_vm" {
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
   env_name       = var.prefix_vm
+  # network_id     = module.vpc_prod.yandex_vpc_network
+  # subnet_zones   = [module.vpc_prod.vpc_subnet_zones[1]]
+  # subnet_ids     = [module.vpc_prod.yandex_vpc_subnet_id[1]]
   network_id     = module.vpc.yandex_vpc_network
   subnet_zones   = [module.vpc.vpc_subnet_zones]
   subnet_ids     = [module.vpc.yandex_vpc_subnet]

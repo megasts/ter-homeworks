@@ -141,6 +141,23 @@ module "vpc_dev" {
 
 Предоставьте код, план выполнения, результат из консоли YC.
 
+------
+
+### Ответ
+
+  - код находится здесь: [vpc_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/vpc_2)
+
+  - скрин плана выполнения:
+
+  ![Screenshot4_1](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot4_1.png)
+
+  - скрин результата из консоли YC:
+
+  ![Screenshot4_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot4_2.png)
+
+
+------
+
 ### Задание 5*
 
 1. Напишите модуль для создания кластера managed БД Mysql в Yandex Cloud с одним или несколькими(2 по умолчанию) хостами в зависимости от переменной HA=true или HA=false. Используйте ресурс yandex_mdb_mysql_cluster: передайте имя кластера и id сети.
