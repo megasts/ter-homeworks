@@ -54,10 +54,13 @@
 3. Модуль должен возвращать в root module с помощью output информацию о yandex_vpc_subnet. Пришлите скриншот информации из terraform console о своем модуле. Пример: > module.vpc_dev  
 4. Замените ресурсы yandex_vpc_network и yandex_vpc_subnet созданным модулем. Не забудьте передать необходимые параметры сети из модуля vpc в модуль с виртуальной машиной.
 5. Сгенерируйте документацию к модулю с помощью terraform-docs.
- 
+
+------ 
 ### Ответ
 
 Документация к модулю: [README.md](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/vpc/README.md)
+
+------
 
 ### Задание 3
 1. Выведите список ресурсов в стейте.
@@ -66,14 +69,44 @@
 4. Импортируйте всё обратно. Проверьте terraform plan. Значимых(!!) изменений быть не должно.
 Приложите список выполненных команд и скриншоты процессы.
 
+------
+
 ### Ответ
 1. Выведите список ресурсов в стейте.
 ```
 terraform state list
 ```
-![Screenshot3_1](https://github.com/megasts/ter-homeworks/blob/main/04/img/Screenshot3_1.png)
+![Screenshot3_1](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_1.png)
 
 2. Полностью удалите из стейта модуль vpc.
+```
+terraform state rm module.vpc
+```
+![Screenshot3_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_2.png)
+
+3. Полностью удалите из стейта модуль vm.
+```
+terraform state rm module.analytics_vm
+terraform state rm module.marketing_vm
+```
+![Screenshot3_3](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_3.png)
+
+4. Импортируйте всё обратно.
+```
+terraform import module.analytics_vm.yandex_compute_instance.vm[0] fhmciamqat6poetbe2tp
+terraform import module.marketing_vm.yandex_compute_instance.vm[0] fhmoopcua3apvo1v503e
+terraform import module.vpc.yandex_vpc_subnet.my_subnet e9b2ash7or07isrjg85e
+terraform import module.vpc.yandex_vpc_network.my_network enpv8hcj2qfl85ed16bm
+```
+![Screenshot3_4](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_4.png)
+
+![Screenshot3_5](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_5.png)
+
+![Screenshot3_6](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_6.png)
+
+![Screenshot3_7](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot3_7.png)
+
+------
 
 ## Дополнительные задания (со звёздочкой*)
 
