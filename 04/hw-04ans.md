@@ -43,7 +43,7 @@
  
 ### Ответ
 
-Документация к модулю: [README.md](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/vpc/README.md)
+Документация к модулю: [README.md](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/vpc/README.md)
 
 ### Задание 3
 1. Выведите список ресурсов в стейте.
