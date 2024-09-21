@@ -29,7 +29,21 @@
 ------
 
 ### Ответ
+  - скриншот подключения к консоли и вывод команды ```sudo nginx -t```
 
+![Screenshot1_1](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot1_1.png)
+
+  - скриншоты консоли ВМ yandex cloud с их метками
+
+![Screenshot1_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot1_2.png)
+
+![Screenshot1_3](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot1_3.png)
+
+  - скриншоты содержимого модулей
+
+![Screenshot1_4](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot1_4.png)
+
+![Screenshot1_5](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot1_5.png)
 
 ------
 
