@@ -9,7 +9,7 @@ module "vpc" {
 
 module "marketing_vm" {
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
-  env_name       = var.vm_web_name 
+  env_name       = var.prefix_vm 
   network_id     = module.vpc.yandex_vpc_network
   subnet_zones   = [module.vpc.vpc_subnet_zones]
   subnet_ids     = [module.vpc.yandex_vpc_subnet]
@@ -31,7 +31,7 @@ module "marketing_vm" {
 
 module "analytics_vm" {
   source         = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
-  env_name       = var.vm_db_name
+  env_name       = var.prefix_vm
   network_id     = module.vpc.yandex_vpc_network
   subnet_zones   = [module.vpc.vpc_subnet_zones]
   subnet_ids     = [module.vpc.yandex_vpc_subnet]

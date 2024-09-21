@@ -5,11 +5,6 @@ variable "service_account_key_file" {
   description = "file_key.json"
 }
 
-variable "cloud_id" {
-  type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
-}
-
 variable "folder_id" {
   type        = string
   description = "ID of the folder that the resource belongs to"
@@ -59,17 +54,9 @@ variable "vms_ssh_root_key" {
   description = "ssh-keygen -t ed25519"
 }
 
-###example vm_web var
-variable "vm_web_name" {
+variable "prefix_vm" {
   type        = string
-  default     = "netology-develop-platform-web"
-  description = "example vm_web_ prefix"
-}
-
-###example vm_db var
-variable "vm_db_name" {
-  type        = string
-  default     = "netology-develop-platform-db"
+  default     = "netology-project"
   description = "example vm_db_ prefix"
 }
 
