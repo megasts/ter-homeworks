@@ -145,7 +145,7 @@ module "vpc_dev" {
 
 ### Ответ
 
-  - код находится здесь: [vpc_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/vpc_2)
+  - код модуля находится здесь: [vpc_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/vpc_2)
 
   - скрин плана выполнения:
 
