@@ -1,0 +1,852 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.8.5",
+  "variables": {
+    "HA": {
+      "value": true
+    },
+    "cluster_name": {
+      "value": "example"
+    },
+    "folder_id": {
+      "value": "b1g8obut7iuv7egloc26"
+    },
+    "name_db": {
+      "value": "test"
+    },
+    "service_account_key_file": {
+      "value": "~/.ssh/authorized_key.json"
+    },
+    "user_db": {
+      "value": "app"
+    },
+    "vpc_zone": {
+      "value": "ru-central1-a"
+    }
+  },
+  "planned_values": {
+    "root_module": {
+      "child_modules": [
+        {
+          "resources": [
+            {
+              "address": "module.MYSQL_DB.yandex_mdb_mysql_database.mdb_mysql",
+              "mode": "managed",
+              "type": "yandex_mdb_mysql_database",
+              "name": "mdb_mysql",
+              "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+              "schema_version": 0,
+              "values": {
+                "name": "test",
+                "timeouts": null
+              },
+              "sensitive_values": {}
+            },
+            {
+              "address": "module.MYSQL_DB.yandex_mdb_mysql_user.mysql_user",
+              "mode": "managed",
+              "type": "yandex_mdb_mysql_user",
+              "name": "mysql_user",
+              "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+              "schema_version": 0,
+              "values": {
+                "name": "app",
+                "password": "megionDB",
+                "permission": [
+                  {
+                    "database_name": "test",
+                    "roles": [
+                      "ALL"
+                    ]
+                  }
+                ],
+                "timeouts": null
+              },
+              "sensitive_values": {
+                "connection_limits": [],
+                "global_permissions": [],
+                "password": true,
+                "permission": [
+                  {
+                    "roles": [
+                      false
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "address": "module.MYSQL_DB"
+        },
+        {
+          "resources": [
+            {
+              "address": "module.cluster.yandex_mdb_mysql_cluster.mdb_mysql_cluster",
+              "mode": "managed",
+              "type": "yandex_mdb_mysql_cluster",
+              "name": "mdb_mysql_cluster",
+              "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+              "schema_version": 0,
+              "values": {
+                "allow_regeneration_host": false,
+                "database": [],
+                "description": null,
+                "environment": "PRESTABLE",
+                "host": [
+                  {
+                    "assign_public_ip": true,
+                    "backup_priority": null,
+                    "name": null,
+                    "priority": null,
+                    "replication_source_name": null,
+                    "zone": "ru-central1-a"
+                  },
+                  {
+                    "assign_public_ip": true,
+                    "backup_priority": null,
+                    "name": null,
+                    "priority": null,
+                    "replication_source_name": null,
+                    "zone": "ru-central1-a"
+                  }
+                ],
+                "labels": null,
+                "name": "example",
+                "resources": [
+                  {
+                    "disk_size": 10,
+                    "disk_type_id": "network-hdd",
+                    "resource_preset_id": "b2.medium"
+                  }
+                ],
+                "restore": [],
+                "security_group_ids": null,
+                "timeouts": null,
+                "user": [],
+                "version": "8.0"
+              },
+              "sensitive_values": {
+                "access": [],
+                "backup_window_start": [],
+                "database": [],
+                "host": [
+                  {},
+                  {}
+                ],
+                "host_group_ids": [],
+                "maintenance_window": [],
+                "mysql_config": {},
+                "performance_diagnostics": [],
+                "resources": [
+                  {}
+                ],
+                "restore": [],
+                "user": []
+              }
+            }
+          ],
+          "address": "module.cluster"
+        },
+        {
+          "resources": [
+            {
+              "address": "module.net.yandex_vpc_network.my_network",
+              "mode": "managed",
+              "type": "yandex_vpc_network",
+              "name": "my_network",
+              "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+              "schema_version": 0,
+              "values": {
+                "description": null,
+                "name": "production",
+                "timeouts": null
+              },
+              "sensitive_values": {
+                "labels": {},
+                "subnet_ids": []
+              }
+            },
+            {
+              "address": "module.net.yandex_vpc_subnet.my_subnet[0]",
+              "mode": "managed",
+              "type": "yandex_vpc_subnet",
+              "name": "my_subnet",
+              "index": 0,
+              "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+              "schema_version": 0,
+              "values": {
+                "description": null,
+                "dhcp_options": [],
+                "name": "production-1",
+                "route_table_id": null,
+                "timeouts": null,
+                "v4_cidr_blocks": [
+                  "10.0.1.0/24"
+                ],
+                "zone": "ru-central1-a"
+              },
+              "sensitive_values": {
+                "dhcp_options": [],
+                "labels": {},
+                "v4_cidr_blocks": [
+                  false
+                ],
+                "v6_cidr_blocks": []
+              }
+            }
+          ],
+          "address": "module.net"
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "module.MYSQL_DB.yandex_mdb_mysql_database.mdb_mysql",
+      "module_address": "module.MYSQL_DB",
+      "mode": "managed",
+      "type": "yandex_mdb_mysql_database",
+      "name": "mdb_mysql",
+      "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "name": "test",
+          "timeouts": null
+        },
+        "after_unknown": {
+          "cluster_id": true,
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "module.MYSQL_DB.yandex_mdb_mysql_user.mysql_user",
+      "module_address": "module.MYSQL_DB",
+      "mode": "managed",
+      "type": "yandex_mdb_mysql_user",
+      "name": "mysql_user",
+      "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "name": "app",
+          "password": "megionDB",
+          "permission": [
+            {
+              "database_name": "test",
+              "roles": [
+                "ALL"
+              ]
+            }
+          ],
+          "timeouts": null
+        },
+        "after_unknown": {
+          "authentication_plugin": true,
+          "cluster_id": true,
+          "connection_limits": true,
+          "global_permissions": true,
+          "id": true,
+          "permission": [
+            {
+              "roles": [
+                false
+              ]
+            }
+          ]
+        },
+        "before_sensitive": false,
+        "after_sensitive": {
+          "connection_limits": [],
+          "global_permissions": [],
+          "password": true,
+          "permission": [
+            {
+              "roles": [
+                false
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "address": "module.cluster.yandex_mdb_mysql_cluster.mdb_mysql_cluster",
+      "module_address": "module.cluster",
+      "mode": "managed",
+      "type": "yandex_mdb_mysql_cluster",
+      "name": "mdb_mysql_cluster",
+      "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "allow_regeneration_host": false,
+          "database": [],
+          "description": null,
+          "environment": "PRESTABLE",
+          "host": [
+            {
+              "assign_public_ip": true,
+              "backup_priority": null,
+              "name": null,
+              "priority": null,
+              "replication_source_name": null,
+              "zone": "ru-central1-a"
+            },
+            {
+              "assign_public_ip": true,
+              "backup_priority": null,
+              "name": null,
+              "priority": null,
+              "replication_source_name": null,
+              "zone": "ru-central1-a"
+            }
+          ],
+          "labels": null,
+          "name": "example",
+          "resources": [
+            {
+              "disk_size": 10,
+              "disk_type_id": "network-hdd",
+              "resource_preset_id": "b2.medium"
+            }
+          ],
+          "restore": [],
+          "security_group_ids": null,
+          "timeouts": null,
+          "user": [],
+          "version": "8.0"
+        },
+        "after_unknown": {
+          "access": true,
+          "backup_retain_period_days": true,
+          "backup_window_start": true,
+          "created_at": true,
+          "database": [],
+          "deletion_protection": true,
+          "folder_id": true,
+          "health": true,
+          "host": [
+            {
+              "fqdn": true,
+              "replication_source": true,
+              "subnet_id": true
+            },
+            {
+              "fqdn": true,
+              "replication_source": true,
+              "subnet_id": true
+            }
+          ],
+          "host_group_ids": true,
+          "id": true,
+          "maintenance_window": true,
+          "mysql_config": true,
+          "network_id": true,
+          "performance_diagnostics": true,
+          "resources": [
+            {}
+          ],
+          "restore": [],
+          "status": true,
+          "user": []
+        },
+        "before_sensitive": false,
+        "after_sensitive": {
+          "access": [],
+          "backup_window_start": [],
+          "database": [],
+          "host": [
+            {},
+            {}
+          ],
+          "host_group_ids": [],
+          "maintenance_window": [],
+          "mysql_config": {},
+          "performance_diagnostics": [],
+          "resources": [
+            {}
+          ],
+          "restore": [],
+          "user": []
+        }
+      }
+    },
+    {
+      "address": "module.net.yandex_vpc_network.my_network",
+      "module_address": "module.net",
+      "mode": "managed",
+      "type": "yandex_vpc_network",
+      "name": "my_network",
+      "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "description": null,
+          "name": "production",
+          "timeouts": null
+        },
+        "after_unknown": {
+          "created_at": true,
+          "default_security_group_id": true,
+          "folder_id": true,
+          "id": true,
+          "labels": true,
+          "subnet_ids": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {
+          "labels": {},
+          "subnet_ids": []
+        }
+      }
+    },
+    {
+      "address": "module.net.yandex_vpc_subnet.my_subnet[0]",
+      "module_address": "module.net",
+      "mode": "managed",
+      "type": "yandex_vpc_subnet",
+      "name": "my_subnet",
+      "index": 0,
+      "provider_name": "registry.terraform.io/yandex-cloud/yandex",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "description": null,
+          "dhcp_options": [],
+          "name": "production-1",
+          "route_table_id": null,
+          "timeouts": null,
+          "v4_cidr_blocks": [
+            "10.0.1.0/24"
+          ],
+          "zone": "ru-central1-a"
+        },
+        "after_unknown": {
+          "created_at": true,
+          "dhcp_options": [],
+          "folder_id": true,
+          "id": true,
+          "labels": true,
+          "network_id": true,
+          "v4_cidr_blocks": [
+            false
+          ],
+          "v6_cidr_blocks": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {
+          "dhcp_options": [],
+          "labels": {},
+          "v4_cidr_blocks": [
+            false
+          ],
+          "v6_cidr_blocks": []
+        }
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "yandex": {
+        "name": "yandex",
+        "full_name": "registry.terraform.io/yandex-cloud/yandex",
+        "expressions": {
+          "folder_id": {
+            "references": [
+              "var.folder_id"
+            ]
+          },
+          "service_account_key_file": {
+            "references": [
+              "var.service_account_key_file"
+            ]
+          },
+          "zone": {
+            "references": [
+              "var.vpc_zone"
+            ]
+          }
+        }
+      }
+    },
+    "root_module": {
+      "module_calls": {
+        "MYSQL_DB": {
+          "source": "../mdb_mysql",
+          "expressions": {
+            "cluster_id": {
+              "references": [
+                "module.cluster.yandex_mdb_mysql_cluster_id",
+                "module.cluster"
+              ]
+            },
+            "name_db": {
+              "references": [
+                "var.name_db"
+              ]
+            },
+            "user_db": {
+              "references": [
+                "var.user_db"
+              ]
+            }
+          },
+          "module": {
+            "resources": [
+              {
+                "address": "yandex_mdb_mysql_database.mdb_mysql",
+                "mode": "managed",
+                "type": "yandex_mdb_mysql_database",
+                "name": "mdb_mysql",
+                "provider_config_key": "yandex",
+                "expressions": {
+                  "cluster_id": {
+                    "references": [
+                      "var.cluster_id"
+                    ]
+                  },
+                  "name": {
+                    "references": [
+                      "var.name_db"
+                    ]
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "yandex_mdb_mysql_user.mysql_user",
+                "mode": "managed",
+                "type": "yandex_mdb_mysql_user",
+                "name": "mysql_user",
+                "provider_config_key": "yandex",
+                "expressions": {
+                  "cluster_id": {
+                    "references": [
+                      "var.cluster_id"
+                    ]
+                  },
+                  "name": {
+                    "references": [
+                      "var.user_db"
+                    ]
+                  },
+                  "password": {
+                    "constant_value": "megionDB"
+                  },
+                  "permission": [
+                    {
+                      "database_name": {
+                        "references": [
+                          "var.name_db"
+                        ]
+                      },
+                      "roles": {
+                        "constant_value": [
+                          "ALL"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "schema_version": 0
+              }
+            ],
+            "variables": {
+              "cluster_id": {
+                "description": "Cluster ID"
+              },
+              "name_db": {
+                "default": "test_db",
+                "description": "Name of the MYSQL DB"
+              },
+              "user_db": {
+                "default": "test_user",
+                "description": "Name of the user MYSQL DB"
+              }
+            }
+          },
+          "depends_on": [
+            "module.cluster"
+          ]
+        },
+        "cluster": {
+          "source": "../mdb_cluster",
+          "expressions": {
+            "HA": {
+              "references": [
+                "var.HA"
+              ]
+            },
+            "cluster_name": {
+              "references": [
+                "var.cluster_name"
+              ]
+            },
+            "yandex_vpc_network_id": {
+              "references": [
+                "module.net.yandex_vpc_network",
+                "module.net"
+              ]
+            }
+          },
+          "module": {
+            "outputs": {
+              "yandex_mdb_mysql_cluster_id": {
+                "expression": {
+                  "references": [
+                    "yandex_mdb_mysql_cluster.mdb_mysql_cluster.id",
+                    "yandex_mdb_mysql_cluster.mdb_mysql_cluster"
+                  ]
+                }
+              }
+            },
+            "resources": [
+              {
+                "address": "yandex_mdb_mysql_cluster.mdb_mysql_cluster",
+                "mode": "managed",
+                "type": "yandex_mdb_mysql_cluster",
+                "name": "mdb_mysql_cluster",
+                "provider_config_key": "yandex",
+                "expressions": {
+                  "environment": {
+                    "constant_value": "PRESTABLE"
+                  },
+                  "name": {
+                    "references": [
+                      "var.cluster_name"
+                    ]
+                  },
+                  "network_id": {
+                    "references": [
+                      "var.yandex_vpc_network_id"
+                    ]
+                  },
+                  "resources": [
+                    {
+                      "disk_size": {
+                        "constant_value": 10
+                      },
+                      "disk_type_id": {
+                        "constant_value": "network-hdd"
+                      },
+                      "resource_preset_id": {
+                        "constant_value": "b2.medium"
+                      }
+                    }
+                  ],
+                  "version": {
+                    "constant_value": "8.0"
+                  }
+                },
+                "schema_version": 0
+              }
+            ],
+            "variables": {
+              "HA": {
+                "default": true,
+                "description": "High-Availability(HA) Cluster true=On/false=Off"
+              },
+              "cluster_name": {
+                "default": "test",
+                "description": "Name of the cluster"
+              },
+              "settings_hosts_ha": {
+                "default": [
+                  {
+                    "zone": "ru-central1-a"
+                  },
+                  {
+                    "zone": "ru-central1-a"
+                  }
+                ]
+              },
+              "yandex_vpc_network_id": {
+                "description": "Network ID"
+              }
+            }
+          },
+          "depends_on": [
+            "module.net"
+          ]
+        },
+        "net": {
+          "source": "../vpc_2",
+          "module": {
+            "outputs": {
+              "vpc_subnet_zones": {
+                "expression": {
+                  "references": [
+                    "yandex_vpc_subnet.my_subnet"
+                  ]
+                }
+              },
+              "yandex_vpc_network": {
+                "expression": {
+                  "references": [
+                    "yandex_vpc_network.my_network.id",
+                    "yandex_vpc_network.my_network"
+                  ]
+                }
+              },
+              "yandex_vpc_subnet_id": {
+                "expression": {
+                  "references": [
+                    "yandex_vpc_subnet.my_subnet"
+                  ]
+                }
+              }
+            },
+            "resources": [
+              {
+                "address": "yandex_vpc_network.my_network",
+                "mode": "managed",
+                "type": "yandex_vpc_network",
+                "name": "my_network",
+                "provider_config_key": "yandex",
+                "expressions": {
+                  "name": {
+                    "references": [
+                      "var.network_name"
+                    ]
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "yandex_vpc_subnet.my_subnet",
+                "mode": "managed",
+                "type": "yandex_vpc_subnet",
+                "name": "my_subnet",
+                "provider_config_key": "yandex",
+                "expressions": {
+                  "name": {
+                    "references": [
+                      "var.env_name",
+                      "count.index"
+                    ]
+                  },
+                  "network_id": {
+                    "references": [
+                      "yandex_vpc_network.my_network.id",
+                      "yandex_vpc_network.my_network"
+                    ]
+                  },
+                  "v4_cidr_blocks": {
+                    "references": [
+                      "var.subnets_data",
+                      "count.index"
+                    ]
+                  },
+                  "zone": {
+                    "references": [
+                      "var.subnets_data",
+                      "count.index"
+                    ]
+                  }
+                },
+                "schema_version": 0,
+                "count_expression": {
+                  "references": [
+                    "var.subnets_data"
+                  ]
+                }
+              }
+            ],
+            "variables": {
+              "env_name": {
+                "default": "production",
+                "description": "prefix name of the subnets"
+              },
+              "network_name": {
+                "default": "production",
+                "description": "VPC network name"
+              },
+              "subnet_name": {
+                "default": "production",
+                "description": "Subnet name"
+              },
+              "subnets_data": {
+                "default": [
+                  {
+                    "cidr": "10.0.1.0/24",
+                    "zone": "ru-central1-a"
+                  }
+                ],
+                "description": "List data of the zone and cidr"
+              }
+            }
+          }
+        }
+      },
+      "variables": {
+        "HA": {
+          "default": true,
+          "description": "High-Availability(HA) Cluster true=On/false=Off"
+        },
+        "cluster_name": {
+          "default": "test",
+          "description": "Name of the cluster"
+        },
+        "folder_id": {
+          "description": "ID of the folder that the resource belongs to"
+        },
+        "name_db": {
+          "default": "test_db",
+          "description": "Name of the MYSQL DB"
+        },
+        "service_account_key_file": {
+          "description": "file_key.json"
+        },
+        "user_db": {
+          "default": "test_user",
+          "description": "Name of the user MYSQL DB pw megionDB"
+        },
+        "vpc_zone": {
+          "default": "ru-central1-a",
+          "description": "The zones field is an array of your availability zones"
+        }
+      }
+    }
+  },
+  "relevant_attributes": [
+    {
+      "resource": "module.net.yandex_vpc_network.my_network",
+      "attribute": [
+        "id"
+      ]
+    },
+    {
+      "resource": "module.net.yandex_vpc_subnet.my_subnet",
+      "attribute": []
+    },
+    {
+      "resource": "module.cluster.yandex_mdb_mysql_cluster.mdb_mysql_cluster",
+      "attribute": [
+        "id"
+      ]
+    }
+  ],
+  "timestamp": "2024-09-24T21:07:23Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}

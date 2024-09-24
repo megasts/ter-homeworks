@@ -165,6 +165,29 @@ module "vpc_dev" {
 3. Используя оба модуля, создайте кластер example из одного хоста, а затем добавьте в него БД test и пользователя app. Затем измените переменную и превратите сингл хост в кластер из 2-х серверов.
 4. Предоставьте план выполнения и по возможности результат. Сразу же удаляйте созданные ресурсы, так как кластер может стоить очень дорого. Используйте минимальную конфигурацию.
 
+------
+
+### Ответ
+
+  - код находится здесь: [mysql_cluster](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_mysql_cluster)
+  [module_cluster](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_cluster)
+  [module_mysql](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_mysql)
+
+  - скрин плана выполнения: 
+
+  ![Screenshot5_1](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_1.png)
+  ![Screenshot5_2](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_2.png)
+
+  - результат:
+
+  ![Screenshot5_3](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_3.png)
+  ![Screenshot5_4](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_4.png)
+  ![Screenshot5_5](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_5.png)
+  ![Screenshot5_6](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_6.png)
+  ![Screenshot5_7](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_7.png)
+  ![Screenshot5_8](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_8.png)
+  ![Screenshot5_9](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_9.png)
+
 ### Задание 6*
 1. Используя готовый yandex cloud terraform module и пример его вызова(examples/simple-bucket): https://github.com/terraform-yc-modules/terraform-yc-s3 .
 Создайте и не удаляйте для себя s3 бакет размером 1 ГБ(это бесплатно), он пригодится вам в ДЗ к 5 лекции.
