@@ -169,8 +169,11 @@ module "vpc_dev" {
 
 ### Ответ
 
-  - код находится здесь: [mysql_cluster](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_mysql_cluster)
+  - код находится здесь: 
+  [mysql_cluster](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_mysql_cluster)
+
   [module_cluster](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_cluster)
+  
   [module_mysql](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/src/mdb_mysql)
 
   - скрин плана выполнения: 
@@ -182,7 +185,6 @@ module "vpc_dev" {
 
   ![Screenshot5_3](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_3.png)
   ![Screenshot5_4](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_4.png)
-  ![Screenshot5_5](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_5.png)
   ![Screenshot5_6](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_6.png)
   ![Screenshot5_7](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_7.png)
   ![Screenshot5_8](https://github.com/megasts/ter-homeworks/blob/terraform-04/04/img/Screenshot5_8.png)
