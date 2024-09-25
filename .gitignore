@@ -15,3 +15,12 @@ personal.auto.tfvars
 terraform.tfvars
 
 tfplan
+04/src/mdb_mysql_cluster v1/local.tf
+04/src/mdb_mysql_cluster v1/main.tf
+04/src/mdb_mysql_cluster v1/outputs.tf
+04/src/mdb_mysql_cluster v1/providers.tf
+04/src/mdb_mysql_cluster v1/variables.tf
+04/src/mdb_mysql_cluster v2/main.tf
+04/src/mdb_mysql_cluster v2/outputs.tf
+04/src/mdb_mysql_cluster v2/providers.tf
+04/src/mdb_mysql_cluster v2/variables.tf
